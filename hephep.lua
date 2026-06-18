@@ -8,7 +8,7 @@ local PlaceID = game.PlaceId
 
 -- Persist settings
 getgenv().AutoHopEnabled = getgenv().AutoHopEnabled ~= false
-getgenv().HopDelay = getgenv().HopDelay or 30
+getgenv().HopDelay = getgenv().HopDelay or 60
 
 local AutoHop = getgenv().AutoHopEnabled
 local Delay = getgenv().HopDelay
@@ -23,7 +23,7 @@ local QueueOnTeleport =
 local function QueueScript()
     if QueueOnTeleport then
         QueueOnTeleport([[
-            loadstring(game:HttpGet("YOUR_SCRIPT_URL"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Zharkelion/zhark/refs/heads/main/hephep.lua"))()
         ]])
     end
 end
