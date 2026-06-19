@@ -159,14 +159,22 @@ local function ServerHop()
     local data = HttpService:JSONDecode(response)
 
     for _, server in ipairs(data.data) do
-        if server.id ~= game.JobId
-        and server.playing < server.maxPlayers then
+    local freeSlots = server.maxPlayers - server.playing
 
-            TeleportService:TeleportToPlaceInstance(
-                PlaceID,
-                server.id,
-                LocalPlayer
-            )
+    if server.id ~= game.JobId
+        and freeSlots >= 3 then -- require at least 3 free slots
+
+        TeleportService:TeleportToPlaceInstance(
+            PlaceID,
+            server.id,
+            LocalPlayer
+        )
+
+        return true
+    end
+end
+
+return false
 
             return
         end
